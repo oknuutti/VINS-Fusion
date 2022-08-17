@@ -18,15 +18,15 @@ image_height: 540
 estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
                         # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
 
-# from data/nokia/kalibr_data/20/res5:
+# from data/nokia/kalibr_data/20/res9:
 body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [-0.99964987, -0.01352721,  0.02274109,  0.03671091,
-          -0.02276028,  0.00126672, -0.99974015,  0.00987642,
-           0.01349489, -0.9999077,  -0.00157416, -0.12383056,
-           0.,          0.,          0.,          1.]    # res9
+   data: [-0.99964987, -0.02276028,  0.01349489,  0.03671091,
+          -0.01352721,  0.00126672, -0.9999077,   0.00987642,
+           0.02274109, -0.99974015, -0.00157416, -0.12383056,
+           0.,          0.,          0.,          1.]    # res9, TODO: try transposing R part
 
 #Multiple thread support
 multiple_thread: 1
@@ -49,11 +49,11 @@ acc_n: 0.0707744341   # 0.0707744341   accelerometer measurement noise standard 
 gyr_n: 0.0113228892   # 0.0113228892   gyroscope measurement noise standard deviation.
 acc_w: 6.640680e-04   # 4.817655897019504e-05*sqrt(190) # accelerometer bias random work noise standard deviation.
 gyr_w: 1.159017e-05   # 8.408395763111122e-07*sqrt(190) # gyroscope bias random work noise standard deviation.
-g_norm: 9.80655       # gravity magnitude
+g_norm: 9.819         # gravity magnitude  9.80655
 
 #unsynchronization parameters
-estimate_td: 0                # online estimate time offset between camera and imu
-td: -0.73    # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+estimate_td: 1                # online estimate time offset between camera and imu
+td: -0.58    # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #loop closure parameters
 load_previous_pose_graph: 0   # load and reuse previous pose graph; load from 'pose_graph_save_path'
